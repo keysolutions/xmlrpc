@@ -100,6 +100,9 @@ make contributions. Simply create a fork and make your changes.
 The  Base64  encoder/decoder found in NSStringAdditions and NSDataAdditions have
 been adapted from code provided by Dave Winer.
 
+The ISO8601DateFormatter date parsing library was written by Peter Hosey. See
+ISO8601DateFormatter-LICENSE.txt.
+
 The  idea  for  this framework came from examples provided by Brent Simmons, the
 creator of NetNewsWire.
 
