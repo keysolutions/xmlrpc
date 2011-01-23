@@ -22,6 +22,7 @@
 
 #import "XMLRPCEventBasedParserDelegate.h"
 #import "NSDataAdditions.h"
+#import "ISO8601DateFormatter.h"
 
 @interface XMLRPCEventBasedParserDelegate (XMLRPCEventBasedParserDelegatePrivate)
 
@@ -30,10 +31,6 @@
 #pragma mark -
 
 - (void)addElementValueToParent;
-
-#pragma mark -
-
-- (NSDate *)parseDateString: (NSString *)dateString withFormat: (NSString *)format;
 
 #pragma mark -
 
@@ -304,20 +301,6 @@
     }
 }
 
-#pragma mark -
-
-- (NSDate *)parseDateString: (NSString *)dateString withFormat: (NSString *)format {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSDate *result = nil;
-    
-    [dateFormatter setDateFormat: format];
-    
-    result = [dateFormatter dateFromString: dateString];
-    
-    [dateFormatter release];
-    
-    return result;
-}
 
 #pragma mark -
 
@@ -342,15 +325,16 @@
 }
 
 - (NSDate *)parseDate: (NSString *)value {
-    NSDate *result = nil;
-    
-    result = [self parseDateString: value withFormat: @"yyyyMMdd'T'HH:mm:ss"];
-    
-    if (!result) {
-        result = [self parseDateString: value withFormat: @"yyyy'-'MM'-'dd'T'HH:mm:ss"];
-    }
-    
-    return result;
+	NSDate *result = nil;
+	
+	ISO8601DateFormatter *formatter = [[ISO8601DateFormatter alloc] init];		
+	NSDateComponents *dateComponents = [formatter dateComponentsFromString:value];	
+	
+	result = [[NSCalendar currentCalendar] dateFromComponents:dateComponents];	
+	
+	[formatter release];
+	
+	return result;
 }
 
 - (NSData *)parseData: (NSString *)value {

@@ -42,6 +42,9 @@
 		07E761001011788B00E9BDEE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		07EF453B0E721A5D009F2708 /* XMLRPCEventBasedParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EF45390E721A5D009F2708 /* XMLRPCEventBasedParser.h */; };
 		07EF453C0E721A5D009F2708 /* XMLRPCEventBasedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EF453A0E721A5D009F2708 /* XMLRPCEventBasedParser.m */; };
+		66A6C01E12EBD2F5007F3211 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6C01C12EBD2F5007F3211 /* ISO8601DateFormatter.m */; };
+		66A6C01F12EBD2F5007F3211 /* ISO8601DateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 66A6C01D12EBD2F5007F3211 /* ISO8601DateFormatter.h */; };
+		66A6C02012EBD2F5007F3211 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6C01C12EBD2F5007F3211 /* ISO8601DateFormatter.m */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +108,8 @@
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		66A6C01C12EBD2F5007F3211 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		66A6C01D12EBD2F5007F3211 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* XMLRPC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMLRPC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -252,6 +257,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				66A6C01B12EBD2E4007F3211 /* ISO8601DateFormatter */,
 				07B0C6140E33A65E006453B4 /* Additions */,
 				07452BDC0E469C6900A57686 /* Delegates */,
 				07B0C5FA0E33A659006453B4 /* XMLRPC.h */,
@@ -301,6 +307,15 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		66A6C01B12EBD2E4007F3211 /* ISO8601DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				66A6C01C12EBD2F5007F3211 /* ISO8601DateFormatter.m */,
+				66A6C01D12EBD2F5007F3211 /* ISO8601DateFormatter.h */,
+			);
+			name = ISO8601DateFormatter;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -320,6 +335,7 @@
 				0707047810114B9400CB7702 /* XMLRPCEventBasedParserDelegate.h in Headers */,
 				07B0C6100E33A659006453B4 /* XMLRPCRequest.h in Headers */,
 				07B0C6120E33A659006453B4 /* XMLRPCResponse.h in Headers */,
+				66A6C01F12EBD2F5007F3211 /* ISO8601DateFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +388,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "XMLRPC" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* XMLRPC */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -447,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B52C03101008670015AD8B /* XMLRPCParserTest.m in Sources */,
+				66A6C02012EBD2F5007F3211 /* ISO8601DateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +487,7 @@
 				0707047910114B9400CB7702 /* XMLRPCEventBasedParserDelegate.m in Sources */,
 				07B0C6110E33A659006453B4 /* XMLRPCRequest.m in Sources */,
 				07B0C6130E33A659006453B4 /* XMLRPCResponse.m in Sources */,
+				66A6C01E12EBD2F5007F3211 /* ISO8601DateFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
