@@ -26,11 +26,13 @@
 
 @interface XMLRPCResponse : NSObject {
     NSString *myBody;
+	NSDictionary *myHeaders;
     id myObject;
     BOOL isFault;
 }
 
 - (id)initWithData: (NSData *)data;
+- (id)initWithData: (NSData *)data headers: (NSDictionary *)headers;
 
 #pragma mark -
 
@@ -47,5 +49,8 @@
 #pragma mark -
 
 - (NSString *)body;
+
+#pragma mark -
+- (NSDictionary *)headers;
 
 @end

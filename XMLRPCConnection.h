@@ -30,6 +30,7 @@
     XMLRPCRequest *myRequest;
     NSString *myIdentifier;
     NSMutableData *myData;
+    NSMutableDictionary *myHeaders;
     NSURLConnection *myConnection;
     id<XMLRPCConnectionDelegate> myDelegate;
 }

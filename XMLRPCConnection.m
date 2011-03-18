@@ -56,6 +56,7 @@
         myRequest = [request retain];
         myIdentifier = [[NSString stringByGeneratingUUID] retain];
         myData = [[NSMutableData alloc] init];
+        myHeaders = [[NSMutableDictionary alloc] init];
         
         myConnection = [[NSURLConnection alloc] initWithRequest: [request request] delegate: self];
         
@@ -78,10 +79,12 @@
 #pragma mark -
 
 + (XMLRPCResponse *)sendSynchronousXMLRPCRequest: (XMLRPCRequest *)request error: (NSError **)error {
-    NSData *data = [[[NSURLConnection sendSynchronousRequest: [request request] returningResponse: nil error: error] retain] autorelease];
+    NSURLResponse *response;
+    
+    NSData *data = [[[NSURLConnection sendSynchronousRequest: [request request] returningResponse: &response error: error] retain] autorelease];
     
     if (data) {
-        return [[[XMLRPCResponse alloc] initWithData: data] autorelease];
+        return [[[XMLRPCResponse alloc] initWithData: data headers: [(NSHTTPURLResponse *)response allHeaderFields]] autorelease];
     }
     
     return nil;
@@ -112,6 +115,7 @@
     [myRequest release];
     [myIdentifier release];
     [myData release];
+    [myHeaders release];
     [myConnection release];
     [myDelegate release];
     
@@ -137,6 +141,7 @@
         }
     }
     
+    [myHeaders addEntriesFromDictionary: [(NSHTTPURLResponse *)response allHeaderFields]];
     [myData setLength: 0];
 }
 
@@ -170,7 +175,7 @@
 
 - (void)connectionDidFinishLoading: (NSURLConnection *)connection {
     if (myData && ([myData length] > 0)) {
-        XMLRPCResponse *response = [[[XMLRPCResponse alloc] initWithData: myData] autorelease];
+        XMLRPCResponse *response = [[[XMLRPCResponse alloc] initWithData: myData headers: myHeaders] autorelease];
         XMLRPCRequest *request = [[myRequest retain] autorelease];
         
         [myDelegate request: request didReceiveResponse: response];

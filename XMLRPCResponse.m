@@ -50,6 +50,14 @@
     return self;
 }
 
+- (id)initWithData: (NSData *)data headers: (NSDictionary *)headers {
+	if (self = [self initWithData: data]) {
+		myHeaders = [headers retain];
+	}
+	
+	return self;
+}
+
 #pragma mark -
 
 - (BOOL)isFault {
@@ -86,8 +94,15 @@
 
 #pragma mark -
 
+- (NSDictionary *)headers {
+	return myHeaders;
+}
+
+#pragma mark -
+
 - (void)dealloc {
     [myBody release];
+	[myHeaders release];
     [myObject release];
     
     [super dealloc];
